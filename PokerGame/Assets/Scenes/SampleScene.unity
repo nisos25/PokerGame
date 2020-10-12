@@ -1218,8 +1218,10 @@ GameObject:
   - component: {fileID: 667888331}
   - component: {fileID: 667888330}
   - component: {fileID: 667888329}
+  - component: {fileID: 667888334}
+  - component: {fileID: 667888333}
   m_Layer: 0
-  m_Name: Cards
+  m_Name: Deck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1299,6 +1301,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &667888333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667888328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b781bb194cc78004cbd365292eb58220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: {fileID: 667888334}
+--- !u!114 &667888334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667888328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0c0e8b29023c24db8d2c8fef750a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cards>k__BackingField: []
 --- !u!1 &698729716
 GameObject:
   m_ObjectHideFlags: 0
