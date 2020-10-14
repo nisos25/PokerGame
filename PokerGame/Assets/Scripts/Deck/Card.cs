@@ -3,7 +3,7 @@ using UnityEngine;
 
 public enum Suit
 {
-    Club,
+    Club = 0,
     Spade,
     Diamond,
     Heart

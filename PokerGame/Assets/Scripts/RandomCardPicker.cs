@@ -12,7 +12,7 @@ public class RandomCardPicker : MonoBehaviour
     private List<Card> playerCards = new List<Card>();
     private List<Card> exchangeCards = new List<Card>();
 
-    private void Start()
+    private void Awake()
     {
         GetExchangeCards();
         GetFiveCardsDeck();
