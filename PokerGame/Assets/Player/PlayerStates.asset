@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36687d93a311b94bba89ccd635be954, type: 3}
   m_Name: PlayerStates
   m_EditorClassIdentifier: 
-  currentPlayerDeck: []
+  <CurrentPlayerDeck>k__BackingField: []
