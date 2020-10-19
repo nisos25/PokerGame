@@ -1,15 +1,31 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class DisplayDeck : MonoBehaviour
 {
-    [SerializeField] private Sprite[] values;
-    [SerializeField] private Sprite[] suits;
-    
-    [SerializeField] private SpriteRenderer value;
-    [SerializeField] private SpriteRenderer suit;
+	[SerializeField] private List<Sprite> values;
+	[SerializeField] private List<Sprite> suits;
+	[SerializeField] private PlayerController playerController;
+	
+	private SetCardIcon[] cardsIcon;
+	
+    private void Start()
+    {
+	    cardsIcon = FindObjectsOfType<SetCardIcon>();
+	    UpdateCardsIcons();
+    }
 
-    [SerializeField] private PlayerStates playerStates;
-
-    
+    private void UpdateCardsIcons()
+    {
+	    for (int i = 0; i < cardsIcon.Length; i++)
+	    {
+		    CardInfo cardInfo = cardsIcon[i].GetComponent<CardInfo>();
+		    
+		    Sprite tempSuit = suits[(int) cardInfo.CardSuit];
+		    Sprite tempValue = values[(int) cardInfo.CardValue - 2];
+			    
+			    
+		    cardsIcon[i].SetCardImage(tempValue,tempSuit);
+	    }
+    }
 }

@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: 832abbe37dc0b2842938267878adb0c0
+guid: bf673ddff0639314b9aa742f5a2df529
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8720604468809159126
-    second: Spade
+      213: -1956542154277633584
+    second: J
   - first:
-      213: -3739395637988037281
-    second: Heart
+      213: 3722050372204317974
+    second: Q
   - first:
-      213: -469525390435789673
-    second: Diamond
+      213: 2591414094508297585
+    second: K
   - first:
-      213: -5196480314518052078
-    second: Club
-  - first:
-      213: -612294750349367285
-    second: Symbols_4
+      213: -2131057800583320869
+    second: A
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -60,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -76,7 +73,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -88,7 +85,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -102,85 +99,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spade
+      name: J
       rect:
         serializedVersion: 2
-        x: 15
-        y: 104
-        width: 61
-        height: 81
+        x: 18
+        y: 1257
+        width: 227
+        height: 680
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d1dd068f8fc50970800000000000000
-      internalID: 8720604468809159126
+      spriteID: 0d14432e647f8d4e0800000000000000
+      internalID: -1956542154277633584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heart
+      name: Q
       rect:
         serializedVersion: 2
-        x: 98
-        y: 104
-        width: 88
-        height: 81
+        x: 711
+        y: 1229
+        width: 348
+        height: 716
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5de31bba7ffa1cc0800000000000000
-      internalID: -3739395637988037281
+      spriteID: 61d495fd71167a330800000000000000
+      internalID: 3722050372204317974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Diamond
+      name: K
       rect:
         serializedVersion: 2
-        x: 2
-        y: 15
-        width: 88
-        height: 81
+        x: 51
+        y: 136
+        width: 360
+        height: 672
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7945c022529eb79f0800000000000000
-      internalID: -469525390435789673
+      spriteID: 17d8b19936d86f320800000000000000
+      internalID: 2591414094508297585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Club
+      name: A
       rect:
         serializedVersion: 2
-        x: 107
-        y: 15
-        width: 70
-        height: 81
+        x: 820
+        y: 136
+        width: 361
+        height: 672
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21367d2afa462e7b0800000000000000
-      internalID: -5196480314518052078
+      spriteID: bdae760a836fc62e0800000000000000
+      internalID: -2131057800583320869
       vertices: []
       indices: 
       edges: []
