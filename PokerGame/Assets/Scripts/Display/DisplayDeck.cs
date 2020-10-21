@@ -5,8 +5,7 @@ public class DisplayDeck : MonoBehaviour
 {
 	[SerializeField] private List<Sprite> values;
 	[SerializeField] private List<Sprite> suits;
-	[SerializeField] private PlayerController playerController;
-	
+
 	private SetCardIcon[] cardsIcon;
 	
     private void Start()

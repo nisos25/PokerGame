@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a10036947f5051408d5ec32e11a40a1, type: 3}
-  m_Name: ChangeCards
+  m_Name: NoMoreChanges
   m_EditorClassIdentifier: 

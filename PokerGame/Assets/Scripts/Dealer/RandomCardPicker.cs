@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 
 public class RandomCardPicker : MonoBehaviour
 {
-	[SerializeField] private GameEvent changeCards;
 	[SerializeField] private GameObject card;
 	[SerializeField] private Transform exchangeCardsParent;
 	[SerializeField] private Transform[] cardsPositions;
@@ -15,15 +14,16 @@ public class RandomCardPicker : MonoBehaviour
 	
 	private List<CardInfo> generatedCardsList = new List<CardInfo>();
 	private List<CardInfo> playerCards = new List<CardInfo>();
-	private List<CardInfo> exchangeCards = new List<CardInfo>();
+	
+	public List<CardInfo> ExchangeCards { get; set; } = new List<CardInfo>();
 
 	private void Awake()
 	{
 		GetDeck(5, cardsPositions);
 		GetDeck(3, exchangeCardsParent);
 
-		playerController.SelectedCards = generatedCardsList.Take(5).ToList();
-		exchangeCards = generatedCardsList.Skip(5).Take(3).ToList();
+		playerController.CurrentDeck = generatedCardsList.Take(5).ToList();
+		ExchangeCards = generatedCardsList.Skip(5).Take(3).ToList();
 	}
 	
 	private void GetDeck(int size, params Transform[] parent)
