@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,20 +8,19 @@ public class RandomCardPicker : MonoBehaviour
 	[SerializeField] private GameObject card;
 	[SerializeField] private Transform exchangeCardsParent;
 	[SerializeField] private Transform[] cardsPositions;
-	[SerializeField] private PlayerController playerController; 
-	
-	private List<CardInfo> generatedCardsList = new List<CardInfo>();
-	private List<CardInfo> playerCards = new List<CardInfo>();
-	
-	public List<CardInfo> ExchangeCards { get; set; } = new List<CardInfo>();
 
+	private Dealer dealer;
+	private List<CardInfo> generatedCardsList = new List<CardInfo>();
+	
 	private void Awake()
 	{
+		dealer = GetComponent<Dealer>();
+		
 		GetDeck(5, cardsPositions);
 		GetDeck(3, exchangeCardsParent);
 
-		playerController.CurrentDeck = generatedCardsList.Take(5).ToList();
-		ExchangeCards = generatedCardsList.Skip(5).Take(3).ToList();
+		dealer.PlayerCards = generatedCardsList.Take(5).ToList();
+		dealer.ExchangeCards = generatedCardsList.Skip(5).Take(3).ToList();
 	}
 	
 	private void GetDeck(int size, params Transform[] parent)

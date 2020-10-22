@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	[SerializeField] private GameEvent noMoreChanges;
-	[SerializeField] private RandomCardPicker dealer;
+	[SerializeField] private Dealer dealer;
 	[SerializeField] private int exchangeCardsSize = 3;
 	[field: SerializeField] public List<CardInfo> CurrentDeck { get; set; }
 
