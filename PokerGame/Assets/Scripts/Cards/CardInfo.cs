@@ -31,6 +31,8 @@ public class CardInfo : MonoBehaviour, IEquatable<CardInfo>
 	[field: SerializeField] public Value CardValue { get; set; }
 	[field: SerializeField] public Suit CardSuit { get; set; }
 
+	public bool Selected { get; set; }
+	
 	public override bool Equals(object other)
 	{
 		return Equals(other as CardInfo);

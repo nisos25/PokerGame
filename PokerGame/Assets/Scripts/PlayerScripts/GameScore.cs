@@ -13,16 +13,15 @@ public class GameScore : MonoBehaviour
 	public void UpdateScore(int scoreValue)
 	{
 		CurrentGameScore += scoreValue;
-		
 	}
 
-	private void SaveScore()
+	public void SaveScore()
 	{
 		PlayerPrefs.SetInt("Score", CurrentGameScore);
 	}
 
 	private void OnApplicationQuit()
 	{
-		PlayerPrefs.SetInt("Score", 0);
+		//PlayerPrefs.SetInt("Score", 0);
 	}
 }
