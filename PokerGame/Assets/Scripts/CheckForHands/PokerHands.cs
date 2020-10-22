@@ -1,19 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PokerHands : MonoBehaviour
+public enum PokerHand
 {
-	[SerializeField] private PlayerController playerController;
+	Pair = 1,
+	TwoPair = 3,
+	ThreeOfAKind = 5,
+	Straight = 10,
+	Flush = 13,
+	FullHouse = 15,
+	FourOfAKind = 20,
+	StraightFlush = 50,
+	RoyalFlush = 100
+}
 
-	public void CallQuick()
-	{
-		//OrderBySuit(playerController.CurrentDeck, 0, playerController.CurrentDeck.Count - 1);
-		OrderByValue(playerController.CurrentDeck, 0, playerController.CurrentDeck.Count - 1);
-	}
-
+public class PokerHands
+{
 	private bool IsOnePair(List<CardInfo> hand)
 	{
-		OrderByValue(hand, 0, hand.Count - 1);
+		OrderByValue(hand);
 
 		bool h1 = hand[0].CardValue == hand[1].CardValue;
 		bool h2 = hand[1].CardValue == hand[2].CardValue;
@@ -26,12 +31,102 @@ public class PokerHands : MonoBehaviour
 
 	private bool IsTwoPair(List<CardInfo> hand)
 	{
+		OrderByValue(hand);
 
+		bool h1 = hand[0].CardValue == hand[1].CardValue && hand[2].CardValue == hand[3].CardValue;
+		bool h2 = hand[0].CardValue == hand[1].CardValue && hand[3].CardValue == hand[4].CardValue;
+		bool h3 = hand[1].CardValue == hand[2].CardValue && hand[3].CardValue == hand[4].CardValue;
 
-		return true;
+		return h1 || h2 || h3;
 	}
 
-	public void OrderBySuit(List<CardInfo> cardInfo, int low, int high)
+	private bool IsThreeOfAKind(List<CardInfo> hand)
+	{
+		OrderByValue(hand);
+
+		if (IsFourOfAKind(hand) || IsFullHouse(hand))
+		{
+			return false;
+		}
+
+		bool h1 = hand[0].CardValue == hand[2].CardValue;
+
+		bool h2 = hand[1].CardValue == hand[3].CardValue;
+
+		bool h3 = hand[2].CardValue == hand[4].CardValue;
+
+
+		return h1 || h2 || h3;
+	}
+
+	private bool IsStraight(List<CardInfo> hand)
+	{
+		OrderByValue(hand);
+
+		bool h1 = hand[0].CardValue == hand[1].CardValue - 1 &&
+		          hand[1].CardValue == hand[2].CardValue - 1 &&
+		          hand[2].CardValue == hand[3].CardValue - 1;
+
+		bool h2 = hand[3].CardValue == hand[4].CardValue - 1 ||
+		          hand[4].CardValue == Value.Ace && hand[0].CardValue == Value.Two;
+
+		return h1 && h2;
+	}
+
+	private bool IsFourOfAKind(List<CardInfo> hand)
+	{
+		OrderByValue(hand);
+
+		bool h1 = hand[0].CardValue == hand[3].CardValue && hand[3].CardValue != hand[4].CardValue;
+		bool h2 = hand[1].CardValue == hand[4].CardValue && hand[0].CardValue != hand[1].CardValue;
+
+		return h1 || h2;
+	}
+
+	private bool IsFlush(List<CardInfo> hand)
+	{
+		OrderBySuit(hand);
+
+		return hand[0].CardSuit == hand[4].CardSuit;
+	}
+
+	private bool IsStraightFlush(List<CardInfo> hand)
+	{
+		return IsStraight(hand) && IsFlush(hand);
+	}
+
+	private bool IsRoyalFlush(List<CardInfo> hand)
+	{
+		OrderByValue(hand);
+		return IsStraightFlush(hand) && hand[0].CardValue == Value.Ten;
+	}
+
+	private bool IsFullHouse(List<CardInfo> hand)
+	{
+		OrderByValue(hand);
+
+		bool h1 = hand[0].CardValue == hand[2].CardValue &&
+		          hand[2].CardValue != hand[3].CardValue &&
+		          hand[3].CardValue == hand[4].CardValue;
+
+		bool h2 = hand[0].CardValue == hand[1].CardValue &&
+		          hand[1].CardValue != hand[2].CardValue &&
+		          hand[2].CardValue == hand[4].CardValue;
+
+		return h1 || h2;
+	}
+
+	private void OrderBySuit(List<CardInfo> cardInfo)
+	{
+		OrderBySuit(cardInfo, 0, cardInfo.Count - 1);
+	}
+
+	private void OrderByValue(List<CardInfo> cardInfo)
+	{
+		OrderByValue(cardInfo, 0, cardInfo.Count - 1);
+	}
+
+	private void OrderBySuit(List<CardInfo> cardInfo, int low, int high)
 	{
 		if (low < high)
 		{
@@ -66,7 +161,7 @@ public class PokerHands : MonoBehaviour
 		return i + 1;
 	}
 
-	public void OrderByValue(List<CardInfo> cardInfo, int low, int high)
+	private void OrderByValue(List<CardInfo> cardInfo, int low, int high)
 	{
 		if (low < high)
 		{
@@ -99,5 +194,55 @@ public class PokerHands : MonoBehaviour
 		cardInfo[high] = temp1;
 
 		return i + 1;
+	}
+
+	public PokerHand EvaluatePokerHand(List<CardInfo> hand)
+	{
+		if (IsRoyalFlush(hand))
+		{
+			return PokerHand.RoyalFlush;
+		}
+
+		if (IsStraightFlush(hand))
+		{
+			return PokerHand.StraightFlush;
+		}
+
+		if (IsFourOfAKind(hand))
+		{
+			return PokerHand.FourOfAKind;
+		}
+
+		if (IsFullHouse(hand))
+		{
+			return PokerHand.FullHouse;
+		}
+
+		if (IsFlush(hand))
+		{
+			return PokerHand.Flush;
+		}
+
+		if (IsStraight(hand))
+		{
+			return PokerHand.Straight;
+		}
+
+		if (IsThreeOfAKind(hand))
+		{
+			return PokerHand.ThreeOfAKind;
+		}
+
+		if (IsTwoPair(hand))
+		{
+			return PokerHand.TwoPair;
+		}
+
+		if (IsOnePair(hand))
+		{
+			return PokerHand.Pair;
+		}
+
+		return 0;
 	}
 }
