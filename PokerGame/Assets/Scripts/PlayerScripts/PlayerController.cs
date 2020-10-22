@@ -9,60 +9,60 @@ public class PlayerController : MonoBehaviour
 	[field: SerializeField] public List<CardInfo> CurrentDeck { get; set; }
 
 	public List<CardInfo> SelectedCards { get; set; } = new List<CardInfo>();
-	private int numberOfChanges;
+	public int NumberOfChanges { get; private set; }
 	
-	
-	private void Start()
+	private void Awake()
 	{
-		numberOfChanges = exchangeCardsSize;
+		NumberOfChanges = exchangeCardsSize;
 	}
 
 	public void SelectCard(CardInfo selectedCard)
 	{
 		if (SelectedCards.Contains(selectedCard))
 		{
+			selectedCard.Selected = false;
 			SelectedCards.Remove(selectedCard);
 			return;
 		}
-		
-		if (SelectedCards.Count >= numberOfChanges && SelectedCards.Count > 0)
+
+		if (SelectedCards.Count >= NumberOfChanges && SelectedCards.Count > 0)
 		{
+			SelectedCards[0].Selected = false;
 			SelectedCards.RemoveAt(0);
 		}
 
+		selectedCard.Selected = true;
 		SelectedCards.Add(selectedCard);
 	}
 
 	public void ExchangeCards()
 	{
-		int temp = numberOfChanges;
-		
+		int temp = NumberOfChanges;
+
 		if (temp > 0)
 		{
 			if (temp - SelectedCards.Count <= 0)
 			{
-				noMoreChanges.Raise();	
+				noMoreChanges.Raise();
 			}
-		}
-		else
-		{
-			return;
 		}
 
 		for (int i = 0; i < CurrentDeck.Count; i++)
 		{
 			if (SelectedCards.Contains(CurrentDeck[i]))
 			{
-				GameObject card = CurrentDeck[i].gameObject; 
+				GameObject card = CurrentDeck[i].gameObject;
 				
 				dealer.ExchangeCards[0].transform.position = card.transform.position;
+				
 				Destroy(card);
 				CurrentDeck[i] = dealer.ExchangeCards[0];
+				
 				dealer.ExchangeCards.RemoveAt(0);
 			}
 		}
-		
-		numberOfChanges -= SelectedCards.Count;
+
+		NumberOfChanges -= SelectedCards.Count;
 
 		SelectedCards.Clear();
 	}
