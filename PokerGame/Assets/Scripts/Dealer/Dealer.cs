@@ -18,7 +18,10 @@ public class Dealer : MonoBehaviour
 	{
 		PokerHands pokerHands = new PokerHands();
 
-		gameScore.UpdateScore((int)pokerHands.EvaluatePokerHand(PlayerCards));
+		PokerHand pokerHand = pokerHands.EvaluatePokerHand(PlayerCards); 
+		
+		gameScore.UpdateScore((int)pokerHand);
+		gameScore.UpdateHand(pokerHand.ToString());
 
 		scoreChanged.Raise();
 	}
