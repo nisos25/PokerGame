@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameScore : MonoBehaviour
 {
@@ -22,6 +21,6 @@ public class GameScore : MonoBehaviour
 
 	private void OnApplicationQuit()
 	{
-		//PlayerPrefs.SetInt("Score", 0);
+		PlayerPrefs.SetInt("Score", 0);
 	}
 }
