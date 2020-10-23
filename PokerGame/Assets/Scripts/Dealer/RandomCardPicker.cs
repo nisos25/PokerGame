@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -54,8 +55,8 @@ public class RandomCardPicker : MonoBehaviour
 
 	private CardInfo GenerateCard(Transform position)
 	{
-		int suit = Random.Range(0, Suit.GetNames(typeof(Suit)).Length);
-		int value = Random.Range(2, Value.GetNames(typeof(Value)).Length + 2);
+		int suit = Random.Range(0, Enum.GetNames(typeof(Suit)).Length);
+		int value = Random.Range(2, Enum.GetNames(typeof(Value)).Length + 2);
 
 		CardInfo newCard = Instantiate(card, Vector3.zero, Quaternion.identity).GetComponent<CardInfo>();
 

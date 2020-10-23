@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 public enum PokerHand
 {
@@ -98,7 +97,7 @@ public class PokerHands
 	private bool IsRoyalFlush(List<CardInfo> hand)
 	{
 		OrderByValue(hand);
-		return IsStraightFlush(hand) && hand[0].CardValue == Value.Ten;
+		return hand[0].CardValue == Value.Ten && IsStraightFlush(hand);
 	}
 
 	private bool IsFullHouse(List<CardInfo> hand)

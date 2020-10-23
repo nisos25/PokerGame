@@ -39,14 +39,6 @@ public class PlayerController : MonoBehaviour
 	{
 		int temp = NumberOfChanges;
 
-		if (temp > 0)
-		{
-			if (temp - SelectedCards.Count <= 0)
-			{
-				noMoreChanges.Raise();
-			}
-		}
-
 		for (int i = 0; i < CurrentDeck.Count; i++)
 		{
 			if (SelectedCards.Contains(CurrentDeck[i]))
@@ -62,6 +54,14 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
+		if (temp > 0)
+		{
+			if (temp - SelectedCards.Count <= 0)
+			{
+				noMoreChanges.Raise();
+			}
+		}
+		
 		NumberOfChanges -= SelectedCards.Count;
 
 		SelectedCards.Clear();

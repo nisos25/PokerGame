@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DisplayGameScore : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI scoreText;
+	[SerializeField] private TextMeshProUGUI handText;
+	
 	[SerializeField] private GameScore gameScore;
 
 	private void Start()
@@ -18,5 +16,6 @@ public class DisplayGameScore : MonoBehaviour
 	public void UpdateUI()
 	{
 		scoreText.text = "Score: " + gameScore.CurrentGameScore;
+		handText.text = gameScore.hand;
 	}
 }
